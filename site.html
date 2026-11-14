@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage 42 — Detailing & Service</title>
+    <meta name="description" content="Премиальный детейлинг, PDR-ремонт без покраски, химчистка и полировка. Запись через Telegram за 30 секунд.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* === RESET === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .accent {
+            color: #ff6b00;
+        }
+
+        /* === HERO === */
+        .hero {
+            padding: 100px 0 60px;
+            background: radial-gradient(circle at top, #1f1f1f 0%, #0d0d0d 70%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 800px;
+                height: 800px;
+                background: radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%);
+                z-index: 0;
+            }
+
+            .hero .container {
+                position: relative;
+                z-index: 1;
+            }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+
+            .logo span {
+                color: #ff6b00;
+            }
+
+        .hero h1 {
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: #aaa;
+            max-width: 650px;
+            margin: 0 auto 40px;
+        }
+
+        /* === BUTTONS === */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ff6b00, #ff8c00);
+            color: #fff;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 18px;
+            transition: transform 0.2s;
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.35);
+            border: none;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+            }
+
+        .btn-pulse {
+            animation: pulse 2.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 18px rgba(255, 107, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 0, 0);
+            }
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            color: #ff6b00;
+            font-weight: 600;
+            margin-top: 18px;
+            padding: 12px 22px;
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            border-radius: 10px;
+            transition: 0.2s;
+        }
+
+            .btn-secondary:hover {
+                background: rgba(255, 107, 0, 0.1);
+                border-color: #ff6b00;
+            }
+
+        /* === BADGES === */
+        .badge-row {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 45px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* === SECTIONS === */
+        .section {
+            padding: 80px 0;
+        }
+
+            .section h2 {
+                font-size: 38px;
+                font-weight: 800;
+                margin-bottom: 15px;
+            }
+
+        .section-subtitle {
+            color: #999;
+            font-size: 17px;
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        /* === GRIDS === */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* === CARDS === */
+        .card {
+            background: #161616;
+            border: 1px solid #262626;
+            border-radius: 16px;
+            padding: 30px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+            .card:hover {
+                border-color: #ff6b00;
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+
+        .card-badge {
+            position: absolute;
+            top: -12px;
+            left: 25px;
+            background: #ff6b00;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #888;
+            font-size: 15px;
+        }
+
+        /* === PRICE === */
+        .price-card {
+            background: #161616;
+            border: 1px solid #262626;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+            .price-card:hover {
+                border-color: #ff6b00;
+                transform: translateY(-3px);
+            }
+
+            .price-card h4 {
+                font-size: 16px;
+                font-weight: 600;
+                color: #ccc;
+                margin-bottom: 15px;
+                min-height: 48px;
+            }
+
+        .price-tag {
+            font-size: 26px;
+            font-weight: 800;
+            color: #ff6b00;
+            margin-bottom: 10px;
+        }
+
+        .price-card p {
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* === GALLERY === */
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+            .gallery-item:hover {
+                transform: scale(1.03);
+            }
+
+            .gallery-item::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%);
+            }
+
+        .tag {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.7);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            z-index: 2;
+            color: #ff6b00;
+            border: 1px solid rgba(255,107,0,0.3);
+        }
+
+        /* === FINAL CTA === */
+        .final-cta {
+            background: linear-gradient(180deg, #0d0d0d 0%, #1a0a00 100%);
+            padding: 100px 0;
+        }
+
+            .final-cta .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+        /* === FOOTER === */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 14px;
+        }
+
+            .footer a {
+                color: #ff6b00;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+        /* === SCROLL ANIMATION === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        /* === MOBILE === */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .section h2 {
+                font-size: 28px;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .btn-primary {
+                padding: 16px 28px;
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container">
+            <div class="logo">🏁 <span>GARAGE 42</span></div>
+            <h1>Детейлинг-студия <br><span class="accent">премиум-класса</span></h1>
+            <p class="subtitle">Полировка, PDR-ремонт без покраски, химчистка и защитные плёнки. Возвращаем автомобилям заводской блеск.</p>
+
+            <a href="https://t.me/kollory_check_bot?ysclid=mwfqh0a1hx650153441" target="_blank" class="btn-primary btn-pulse">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" />
+                </svg>
+                Записаться через Telegram
+            </a>
+            <div class="badge-row">
+                <span>✔ Работаем 24/7</span>
+                <span>✔ Запись за 30 секунд</span>
+                <span>✔ Напоминание придёт в TG</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- О НАС -->
+    <section class="section about fade-in">
+        <div class="container">
+            <h2>Кто мы такие</h2>
+            <p class="section-subtitle">Garage 42 — это не «дядя Вася в гараже». Это студия с инженерным подходом, стерильной чистотой и оборудованием, которому позавидуют официальные дилеры.</p>
+        </div>
+    </section>
+
+    <!-- ТОЧКИ -->
+    <section class="section locations fade-in">
+        <div class="container">
+            <h2>Наши точки</h2>
+            <p class="section-subtitle">Три филиала в городе. Выберите удобный адрес и запишитесь прямо с сайта.</p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-badge">Точка №1</div>
+                    <h3>ул. Терешковой, 41</h3>
+                    <p>Детейлинг, полировка, PDR-ремонт.</p>
+                    <a href="https://t.me/kollory_check_bot?start=loc1" target="_blank" class="btn-secondary">Записаться сюда →</a>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Точка №2</div>
+                    <h3>пр. Кузнецкий, 85</h3>
+                    <p>Химчистка, оклейка плёнкой, базовое ТО.</p>
+                    <a href="https://t.me/kollory_check_bot?start=loc2" target="_blank" class="btn-secondary">Записаться сюда →</a>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Точка №3</div>
+                    <h3>ул. Тухачевского, 22Б</h3>
+                    <p>Полный спектр услуг, диагностика.</p>
+                    <a href="https://t.me/kollory_check_bot?start=loc3" target="_blank" class="btn-secondary">Записаться сюда →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРАЙС -->
+    <section class="section price fade-in">
+        <div class="container">
+            <h2>Прайс-лист</h2>
+            <p class="section-subtitle">Точные цены зависят от состояния авто. Финальную стоимость мастер назовёт после осмотра.</p>
+            <div class="grid-4">
+                <div class="price-card"><h4>ТО / Диагностика</h4><div class="price-tag">от 2 000 ₽</div><p>1 час работы</p></div>
+                <div class="price-card"><h4>PDR (вмятины)</h4><div class="price-tag">от 3 500 ₽</div><p>2 часа работы</p></div>
+                <div class="price-card"><h4>Полировка кузова</h4><div class="price-tag">от 15 000 ₽</div><p>4 часа работы</p></div>
+                <div class="price-card"><h4>Химчистка / Плёнка</h4><div class="price-tag">от 8 000 ₽</div><p>4 часа работы</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОРТФОЛИО -->
+    <section class="section portfolio fade-in">
+        <div class="container">
+            <h2>Наши работы</h2>
+            <p class="section-subtitle">Реальные результаты: «До» и «После».</p>
+            <div class="grid-gallery">
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800');"><span class="tag">Полировка</span></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800');"><span class="tag">Детейлинг</span></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=800');"><span class="tag">PDR</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФИНАЛЬНЫЙ CTA -->
+    <section class="section final-cta">
+        <div class="container">
+            <h2>Готовы вернуть блеск вашему авто?</h2>
+            <p class="section-subtitle" style="text-align:center;">Запишитесь за 30 секунд через Telegram. Никаких звонков и ожиданий на линии.</p>
+            <a href="https://t.me/kollory_check_bot?start=site" target="_blank" class="btn-primary btn-pulse">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" />
+                </svg>
+                Записаться через Telegram
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Garage 42. Detailing & Service.</p>
+            <p style="margin-top:10px;">📞 +7 (900) 123-45-67 &nbsp;|&nbsp; ✈️ <a href="https://t.me/garazh42_admin" target="_blank">@garazh42_admin</a></p>
+        </div>
+    </footer>
+
+    <!-- Скрипт: анимация появления при скролле -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
